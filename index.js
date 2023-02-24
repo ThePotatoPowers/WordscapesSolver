@@ -69,21 +69,34 @@ app.post("/unscramble", async (req, res) => {
             }
         }
     }
+    // console.log("all words");
+    // console.log(allWords)
+    // console.log("end here!")
+
     // remove the word if it is not in the dictionary
     for (let i = 0; i < allWords.length; i++) {
-        let word = allWords[i];
-        //let response = await axios.get("https://api.dictionaryapi.dev/api/v2/entries/en/"+word);
-        fetch("https://api.dictionaryapi.dev/api/v2/entries/en/"+word)
-        .then(response => response.json())
-        .then(data => {
-            if (data.length > 0) {
-                if (word.length == 3) threeLetterWords.push(word);
-                if (word.length == 4) fourLetterWords.push(word);
-                if (word.length == 5) fiveLetterWords.push(word);
-                if (word.length == 6) sixLetterWords.push(word);
-        }
+        let word = allWords[i].toLowerCase();
+        var url = "https://api.dictionaryapi.dev/api/v2/entries/en/"+word;
+        //console.log(url)
+        await axios.get(url)
+        .then(response => {
+            if (response.data.title === "No Definitions Found") {
+                //console.log("ERRORING")
+                
+            }
+            else {
+                if (word.length == 3 && !threeLetterWords.includes(word)) threeLetterWords.push(word);
+                if (word.length == 4 && !fourLetterWords.includes(word)) fourLetterWords.push(word);
+                if (word.length == 5 && !fiveLetterWords.includes(word)) fiveLetterWords.push(word);
+                if (word.length == 6 && !sixLetterWords.includes(word)) sixLetterWords.push(word);
+            }
+            
         })
-        .catch(error => console.error(error));
+        .catch(error => {
+            
+        });
+        // watch for error
+
         
     }
     console.log(threeLetterWords);
