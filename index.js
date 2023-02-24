@@ -3,10 +3,10 @@ const app = express();
 const bodyParser = require('body-parser');
 const axios = require("axios");
 
-app.use(express.static(__dirname + '/templates'));
+app.use(express.static(__dirname + '/public'));
 
 app.get("/", function(req, res)  {
-    res.sendFile(__dirname + "/templates/index.html");
+    res.sendFile(__dirname + "/public/index.html");
 });
 app.use(bodyParser.json());
 
