@@ -31,3 +31,10 @@
 .button-1:focus {
   background-color: #F082AC;
 }
+
+td {
+  display: inline-block;
+  margin-right: 10px;
+  height: 20px;
+}
+

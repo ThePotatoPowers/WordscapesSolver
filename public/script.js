@@ -16,10 +16,10 @@ function processLetters() {
         .then((data) => {
         
             
-            $(`#3Letter tbody`).find('td').empty();
-            $(`#4Letter tbody`).find('td').empty();
-            $(`#5Letter tbody`).find('td').empty();
-            $(`#6Letter tbody`).find('td').empty();
+            $(`#3Letter tbody`).empty();
+            $(`#4Letter tbody`).empty();
+            $(`#5Letter tbody`).empty();
+            $(`#6Letter tbody`).empty();
 
             // fill the table with the values from the data object
             threeLetterWords = data.threeLetterWords;

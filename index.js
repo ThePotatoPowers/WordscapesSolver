@@ -93,7 +93,7 @@ app.post("/unscramble", async (req, res) => {
             
         })
         .catch(error => {
-            console.log(error)
+            //console.log(error)
         });
         // watch for error
 
