@@ -27,6 +27,20 @@ function processLetters() {
             fiveLetterWords = data.fiveLetterWords;
             sixLetterWords = data.sixLetterWords;
 
+
+            if (threeLetterWords.length == 0) {
+                $(`#3Letter tbody`).append(`<td>No words found</td>`);
+            }
+            if (fourLetterWords.length == 0) {
+                $(`#4Letter tbody`).append(`<td>No words found</td>`);
+            }
+            if (fiveLetterWords.length == 0) {
+                $(`#5Letter tbody`).append(`<td>No words found</td>`);
+            }
+            if (sixLetterWords.length == 0) {
+                $(`#6Letter tbody`).append(`<td>No words found</td>`);
+            }
+
             for (let i = 0; i < threeLetterWords.length; i++) {
                 let table = $(`#3Letter tbody`);
                 table.append(`<td>${threeLetterWords[i]}</td>`);
