@@ -110,6 +110,8 @@ app.post("/unscramble", async (req, res) => {
     // remove the word if it is not in the dictionary
     for (let i = 0; i < allWords.length; i++) {
         let word = allWords[i].toLowerCase();
+        // check if word has a vowel
+        if (word.length < 3 || word.length > 6 || !/[aeiou]/.test(word)) continue;
         // var url = "https://api.dictionaryapi.dev/api/v2/entries/en/"+word;
         // //console.log(url)
         // await axios.get(url)
