@@ -31,6 +31,7 @@ app.post("/unscramble", async (req, res) => {
             for (let k = 0; k < text.length; k++) {
                 if (i == k || j == k) continue;
                 let word = text[i] + text[j] + text[k];
+                if (word.length < 3 || word.length > 6 || !/[aeiou]/.test(word)) continue;
                 allWords.push(word);
             }
         }
@@ -45,6 +46,7 @@ app.post("/unscramble", async (req, res) => {
                 for (let l = 0; l < text.length; l++) {
                     if (i == l || j == l || k == l) continue;
                     let word = text[i] + text[j] + text[k] + text[l];
+                    if (word.length < 3 || word.length > 6 || !/[aeiou]/.test(word)) continue;
                     allWords.push(word);
                 }
             }
@@ -62,6 +64,7 @@ app.post("/unscramble", async (req, res) => {
                     for (let m = 0; m < text.length; m++) {
                         if (i == m || j == m || k == m || l == m) continue;
                         let word = text[i] + text[j] + text[k] + text[l] + text[m];
+                        if (word.length < 3 || word.length > 6 || !/[aeiou]/.test(word)) continue;
                         allWords.push(word);
                     }
                 }
@@ -82,6 +85,8 @@ app.post("/unscramble", async (req, res) => {
                         for (let n = 0; n < text.length; n++) {
                             if (i == n || j == n || k == n || l == n || m == n) continue;
                             let word = text[i] + text[j] + text[k] + text[l] + text[m] + text[n];
+                            // check if word has a vowel
+                            if (word.length < 3 || word.length > 6 || !/[aeiou]/.test(word)) continue;
                             allWords.push(word);
                         }
                     }
